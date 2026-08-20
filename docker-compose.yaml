@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/triviadb
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  realtime:
+    build:
+      context: .
+      dockerfile: Dockerfile.realtime
+    ports:
+      - "4000:4000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: triviadb
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
