@@ -5,6 +5,7 @@
   "main": "dist/api/server.js",
   "scripts": {
     "build": "tsc",
+    "start": "node dist/api/server.js",
     "start:api": "node dist/api/server.js",
     "start:realtime": "node dist/realtime/realtime.js",
     "dev:api": "ts-node-dev --respawn --transpile-only src/api/server.ts",
