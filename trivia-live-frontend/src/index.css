@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-arcade-bg text-slate-100 font-body antialiased;
+    background:
+      radial-gradient(circle at 15% 0%, #1a1740 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, #241f5c 0%, transparent 40%),
+      #0a0918;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-arcade-surface border border-white/5 rounded-2xl;
+  }
+  .btn-primary {
+    @apply bg-arcade-violet hover:bg-arcade-violet/90 text-white font-semibold rounded-xl px-4 py-3 transition active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply bg-arcade-surface2 hover:bg-arcade-surface3 text-slate-100 font-semibold rounded-xl px-4 py-3 transition active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .input-field {
+    @apply w-full bg-arcade-surface2 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-arcade-violet;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #33306b;
+  border-radius: 8px;
+}
